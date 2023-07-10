@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Greenhouse{% endblock %}
+
+{% block body %}
+    <h1>Create new Greenhouse</h1>
+
+    {{ include('greenhouse/_form.html.twig') }}
+
+    <a href="{{ path('app_greenhouse_index') }}">back to list</a>
+{% endblock %}
