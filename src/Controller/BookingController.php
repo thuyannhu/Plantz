@@ -40,6 +40,12 @@ class BookingController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/calendar', name: 'app_booking_calendar', methods: ['GET'])]
+    public function calendar(): Response
+    {
+        return $this->render('booking/calendar.html.twig');
+    }
+
     #[Route('/{id}', name: 'app_booking_show', methods: ['GET'])]
     public function show(Booking $booking): Response
     {
