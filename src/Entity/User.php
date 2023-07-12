@@ -36,9 +36,6 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
-    #[ORM\ManyToMany(targetEntity: Booking::class, inversedBy: 'userId')]
-    private Collection $bookingId;
-
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
@@ -48,18 +45,12 @@ class User
     #[ORM\Column]
     private ?string $postalCode = null;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Booking::class)]
+    #[ORM\ManyToMany(targetEntity: Booking::class, inversedBy: 'users')]
     private Collection $bookings;
 
     public function __construct()
     {
-        $this->bookingId = new ArrayCollection();
         $this->bookings = new ArrayCollection();
-    }
-
-    public function __toString(): string
-    {
-        return $this->getFullName();
     }
 
     public function getId(): ?int
@@ -94,6 +85,11 @@ class User
     public function getFullName(): ?string
     {
         return $this->getName() . ' ' . $this->getSurName();
+    }
+
+    public function __toString(): string
+    {
+        return $this->getFullName();
     }
 
     public function getEmail(): ?string

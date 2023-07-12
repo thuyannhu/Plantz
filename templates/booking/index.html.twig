@@ -8,20 +8,29 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>ArrivalDate</th>
-                <th>DepartureDate</th>
-                <th>IsOnsite</th>
-                <th>actions</th>
+                <th>Numéro de réservation</th>
+                <th>Date d'arrivée</th>
+                <th>Date de départ</th>
+                <th>Client</th>
+                <th>Lieux</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for booking in bookings %}
             <tr>
+            <pre>
+            </pre>
                 <td>{{ booking.id }}</td>
                 <td>{{ booking.arrivalDate ? booking.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ booking.departureDate ? booking.departureDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.isOnsite ? 'Yes' : 'No' }}</td>
+                <td>{{ booking.user}}</td>
+                <td>
+                    {% for greenhouse in booking.greenhouses %}
+                        {{ greenhouse.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+
                 <td>
                     <a href="{{ path('app_booking_show', {'id': booking.id}) }}">show</a>
                     <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">edit</a>

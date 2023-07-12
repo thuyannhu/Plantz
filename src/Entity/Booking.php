@@ -15,8 +15,8 @@ class Booking
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: Greenhouse::class, inversedBy: 'bookingId')]
-    private Collection $greenhouseId;
+    #[ORM\ManyToMany(targetEntity: Greenhouse::class, inversedBy: 'bookings')]
+    private Collection $greenhouses;
 
     #[ORM\Column(length: 255)]
     private ?\DateTime $arrivalDate = null;
@@ -24,74 +24,19 @@ class Booking
     #[ORM\Column(length: 255)]
     private ?\DateTime $departureDate = null;
 
-    #[ORM\Column]
-    private ?bool $isOnsite = null;
-
-    #[ORM\ManyToOne(inversedBy: 'bookings')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'bookings')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     public function __construct()
     {
-        $this->greenhouseId = new ArrayCollection();
+        $this->greenhouses = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    /**
-     * @return Collection<int, Greenhouse>
-     */
-    public function getGreenhouseId(): Collection
-    {
-        return $this->greenhouseId;
-    }
-
-    public function addGreenhouseId(Greenhouse $greenhouseId): self
-    {
-        if (!$this->greenhouseId->contains($greenhouseId)) {
-            $this->greenhouseId->add($greenhouseId);
-        }
-
-        return $this;
-    }
-
-    public function removeGreenhouseId(Greenhouse $greenhouseId): self
-    {
-        $this->greenhouseId->removeElement($greenhouseId);
-
-        return $this;
-    }
-
-    public function getGreenhouseNames(): Collection
-    {
-        return $this->greenhouseId->map(function ($greenhouse) {
-            return $greenhouse->getName();
-        });
-    }
-
-    public function addGreenhouseName(string $name): self
-{
-    if (!$this->greenhouseId->exists(function ($key, $greenhouse) use ($name) {
-        return $greenhouse->getName() === $name;
-    })) {
-        $this->greenhouseId->add(new Greenhouse($name));
-    }
-
-    return $this;
-}
-
-public function removeGreenhouseName(string $name): self
-{
-    $this->greenhouseId->filter(function ($greenhouse) use ($name) {
-        return $greenhouse->getName() === $name;
-    })->map(function ($greenhouse) {
-        $this->greenhouseId->removeElement($greenhouse);
-    });
-
-    return $this;
-}
 
     public function getArrivalDate(): ?\DateTime
     {
@@ -117,18 +62,6 @@ public function removeGreenhouseName(string $name): self
         return $this;
     }
 
-    public function isIsOnsite(): ?bool
-    {
-        return $this->isOnsite;
-    }
-
-    public function setIsOnsite(bool $isOnsite): self
-    {
-        $this->isOnsite = $isOnsite;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -141,9 +74,54 @@ public function removeGreenhouseName(string $name): self
         return $this;
     }
 
+    public function getGreenhouses(): Collection
+    {
+        return $this->greenhouses;
+    }
+
+    public function addGreenhouse(Greenhouse $greenhouse): self
+    {
+        if (!$this->greenhouses->contains($greenhouse)) {
+            $this->greenhouses->add($greenhouse);
+        }
+
+        return $this;
+    }
+
+    public function removeGreenhouse(Greenhouse $greenhouse): self
+    {
+        $this->greenhouses->removeElement($greenhouse);
+
+        return $this;
+    }
+
+    public function getUserName(): ?string
+    {
+        $user = $this->getUser();
+        return $user->getName();
+    }
+
+    public function getUserSurname(): ?string
+    {
+        $user = $this->getUser();
+        return $user->getSurname();
+    }
+
+    public function setUserName(string $name): void
+    {
+        $user = $this->getUser();
+        $user->setName($name);
+    }
+
+    public function setUserSurname(string $surname): void
+    {
+        $user = $this->getUser();
+        $user->setSurname($surname);
+    }
+
     public function getUserFullName(): ?string
     {
         $user = $this->getUser();
         return $user->getFullName();
     }
-}
+} 

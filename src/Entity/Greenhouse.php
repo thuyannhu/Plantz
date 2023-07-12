@@ -15,8 +15,8 @@ class Greenhouse
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: Booking::class, mappedBy: 'greenhouseId')]
-    private Collection $bookingId;
+    #[ORM\ManyToMany(targetEntity: Booking::class, mappedBy: 'greenhouses')]
+    private Collection $bookings;
 
     #[ORM\Column]
     private ?int $light = null;
@@ -29,7 +29,7 @@ class Greenhouse
 
     public function __construct()
     {
-        $this->bookingId = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -42,28 +42,25 @@ class Greenhouse
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Booking>
-     */
-    public function getBookingId(): Collection
+    public function getBookings(): Collection
     {
-        return $this->bookingId;
+        return $this->bookings;
     }
 
-    public function addBookingId(Booking $bookingId): self
+    public function addBooking(Booking $booking): self
     {
-        if (!$this->bookingId->contains($bookingId)) {
-            $this->bookingId->add($bookingId);
-            $bookingId->addGreenhouseId($this);
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->addGreenhouse($this);
         }
 
         return $this;
     }
 
-    public function removeBookingId(Booking $bookingId): self
+    public function removeBooking(Booking $booking): self
     {
-        if ($this->bookingId->removeElement($bookingId)) {
-            $bookingId->removeGreenhouseId($this);
+        if ($this->bookings->removeElement($booking)) {
+            $booking->removeGreenhouse($this);
         }
 
         return $this;

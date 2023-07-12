@@ -16,10 +16,16 @@ class GreenhouseFixtures extends Fixture
             $greenhouse = new Greenhouse();
             $greenhouse->setLight($faker->numberBetween(450, 800));
             $greenhouse->setHumidity($faker->numberBetween(30, 75));
-            $greenhouse->setName($faker->word());
+            $greenhouse->setName('serre '.$faker->word());
             $this->addReference('greenhouse_' . $i, $greenhouse);
             $manager->persist($greenhouse);
         }
+        $greenhouse = new Greenhouse();
+            $greenhouse->setLight(0);
+            $greenhouse->setHumidity(0);
+            $greenhouse->setName('a domicile');
+            $this->addReference('greenhouse_' . $i, $greenhouse);
+            $manager->persist($greenhouse);
         $manager->flush();
     }
 }
