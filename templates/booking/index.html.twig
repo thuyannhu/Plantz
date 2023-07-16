@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}Booking index{% endblock %}
+{% block title %}Réservations{% endblock %}
 
 {% block body %}
-    <h1>Booking index</h1>
+    <h1>Réservations</h1>
 
     <table class="table">
         <thead>
@@ -13,7 +13,7 @@
                 <th>Date de départ</th>
                 <th>Client</th>
                 <th>Lieux</th>
-                <th></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +22,8 @@
             <pre>
             </pre>
                 <td>{{ booking.id }}</td>
-                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.departureDate ? booking.departureDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d/m/Y') : '' }}</td>
+                <td>{{ booking.departureDate ? booking.departureDate|date('d/m/Y') : '' }}</td>
                 <td>{{ booking.user}}</td>
                 <td>
                     {% for greenhouse in booking.greenhouses %}
@@ -32,8 +32,8 @@
                 </td>
 
                 <td>
-                    <a href="{{ path('app_booking_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">edit</a>
+                    <a href="{{ path('app_booking_show', {'id': booking.id}) }}"><i class="bi bi-eye"></i></a>
+                    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}"><i class="bi bi-pencil"></i></a>
                 </td>
             </tr>
         {% else %}

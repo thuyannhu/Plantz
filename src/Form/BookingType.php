@@ -47,7 +47,7 @@ class BookingType extends AbstractType
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'label' => 'Utilisateur',
+                'label' => 'Client',
                 'required' => false,
                 'data'=> $builder->getData()->getUser(),
                 'choice_label' => function(User $user) {

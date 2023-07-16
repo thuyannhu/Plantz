@@ -17,7 +17,6 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface
             $booking = new Booking();
             $booking->setArrivalDate($faker->dateTimeBetween('-1 week', '+1 week'));
             $booking->setDepartureDate($faker->dateTimeBetween('+3 week', '+10 week'));
-            $booking->setIsOnsite($faker->boolean());
             $booking->setUser($this->getReference('user_' . $i));
             $manager->persist($booking);
         }

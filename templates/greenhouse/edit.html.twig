@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit Greenhouse{% endblock %}
+{% block title %}Modifier une serre{% endblock %}
 
 {% block body %}
-    <h1>Edit Greenhouse</h1>
+    <h1>Modifier une serre</h1>
 
     {{ include('greenhouse/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_greenhouse_index') }}">back to list</a>
+    <a href="{{ path('app_greenhouse_index') }}">Retour</a>
 
     {{ include('greenhouse/_delete_form.html.twig') }}
 {% endblock %}

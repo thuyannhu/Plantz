@@ -1,39 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}Serres{% endblock %}
 
 {% block body %}
-    <h1>Greenhouse index</h1>
+    <h1>Serres</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Light</th>
-                <th>Humidity</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Lumière (W/m²)</th>
+                <th>Humidité (%)</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for greenhouse in greenhouses %}
             <tr>
-                <td>{{ greenhouse.id }}</td>
+                <td>{{ greenhouse.name }}</td>
+                <td>{{ greenhouse.description }}</td>
                 <td>{{ greenhouse.light }}</td>
                 <td>{{ greenhouse.humidity }}</td>
-                <td>{{ greenhouse.name }}</td>
                 <td>
-                    <a href="{{ path('app_greenhouse_show', {'id': greenhouse.id}) }}">show</a>
-                    <a href="{{ path('app_greenhouse_edit', {'id': greenhouse.id}) }}">edit</a>
+                    <a href="{{ path('app_greenhouse_show', {'id': greenhouse.id}) }}"><i class="bi bi-eye"></i></a>
+                    <a href="{{ path('app_greenhouse_edit', {'id': greenhouse.id}) }}"><i class="bi bi-pencil"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Il n'y a pas de serre</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_greenhouse_new') }}">Create new</a>
+    <a href="{{ path('app_greenhouse_new') }}">Créer une nouvelle serre</a>
 {% endblock %}

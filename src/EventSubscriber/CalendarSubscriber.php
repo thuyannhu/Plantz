@@ -32,8 +32,8 @@ class CalendarSubscriber implements EventSubscriberInterface
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
             ->where('booking.arrivalDate BETWEEN :start and :end OR booking.departureDate BETWEEN :start and :end')
-            ->setParameter('start', $start->format('Y-m-d H:i:s'))
-            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->setParameter('start', $start->format('Y-m-d'))
+            ->setParameter('end', $end->format('Y-m-d'))
             ->getQuery()
             ->getResult();
 
@@ -48,8 +48,8 @@ class CalendarSubscriber implements EventSubscriberInterface
              * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
              */
             $bookingEvent->setOptions([
-                'backgroundColor' => 'light-blue',
-                'borderColor' => 'light-blue',
+                'backgroundColor' => '#D89393',
+                'borderColor' => '#D89393',
             ]);
 
             $bookingEvent->addOption('url', $this->router->generate('app_booking_show', [

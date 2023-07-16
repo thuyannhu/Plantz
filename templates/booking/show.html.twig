@@ -1,34 +1,38 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}Booking{% endblock %}
 
 {% block body %}
-    <h1>Booking</h1>
+    <h1>Réservation numéro {{ booking.id }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ booking.id }}</td>
+                <th>Client</th>
+                <td>{{ booking.user }}</td>
             </tr>
             <tr>
-                <th>ArrivalDate</th>
-                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Date d'arrivée</th>
+                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d/m/Y') : '' }}</td>
             </tr>
             <tr>
-                <th>DepartureDate</th>
-                <td>{{ booking.departureDate ? booking.departureDate|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Date de départ</th>
+                <td>{{ booking.departureDate ? booking.departureDate|date('d/m/Y') : '' }}</td>
             </tr>
-            <tr>
-                <th>IsOnsite</th>
-                <td>{{ booking.isOnsite ? 'Yes' : 'No' }}</td>
+             <tr>
+                <th>Lieu</th>
+                <td>{% for greenhouse in booking.greenhouses %}
+                        {{ greenhouse.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}</td>
             </tr>
+
+            
         </tbody>
     </table>
 
-    <a href="{{ path('app_booking_index') }}">back to list</a>
+    <a href="{{ path('app_booking_calendar') }}">Retourner sur le calendrier</a>
 
-    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">edit</a>
+    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">Modifier</a>
 
     {{ include('booking/_delete_form.html.twig') }}
 {% endblock %}
