@@ -6,7 +6,10 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import "bootswatch/dist/pulse/bootstrap.min.css";
-import "./styles/app.css";
-import "./styles/home.css";
-import "./js/home.js";
+import 'bootswatch/dist/minty/bootstrap.min.css';
+import'./js/home.js';
+import './styles/app.css';
+import './styles/home.css';
+
+
+
