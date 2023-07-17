@@ -18,6 +18,10 @@ body {
 
 }
 
+.logo:hover{
+    color: #eb5c40;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -36,11 +40,12 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 3rem 4rem;
 }
 
 li {
     display: inline-block;
-    margin: 3vw;
+    margin: 0 3vw;
   }
 
 /* Underline styles */
@@ -59,7 +64,7 @@ a::after {
   left: 0;
   width: 100%;
   height: 0.1em;
-  background-color: #a371ff;
+  background-color: #eb5c40;
   transition:  300ms, transform 300ms;
   opacity:1;
   transform: translate3d(-100%, 0, 0);
@@ -72,15 +77,33 @@ a:focus::after {
 }
 
 
-.container {
-  max-width: 1280px;
-  width: 95%;
-  margin: 0 auto;
+.background{
+  width: 90%;
 }
 
+.background-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  
+}
+
+.welcome{
+  position: absolute;
+  top: 3rem;
+  left: 10rem;
+  width: 33%;
+  padding: 10px;
+  font-family: "Lilita One";
+  font-size: 3.5rem;
+  z-index: 1;
+  color: #fef4ebff;
+}
 
 .scroll-container {
   height: 100vh;
+  margin: 4rem 5rem;
   min-height: 450px;
   padding: 2rem 1rem;
   display: flex;
@@ -88,14 +111,14 @@ a:focus::after {
   box-sizing: border-box;
 }
 
-.scroll-container:nth-of-type(1) {
+.scroll-container:nth-of-type(2) {
   background-color: #75caa1;
 }
-.scroll-container:nth-of-type(2) {
+/* .scroll-container:nth-of-type(2) {
   background-color: #eb5c40;
-}
+} */
 .scroll-container:nth-of-type(3) {
-  background-color: #f5ca45;
+  background-color: #eb5c40;
 }
 .scroll-container:nth-of-type(4) {
   background-color: #569ff8;
@@ -105,19 +128,38 @@ a:focus::after {
   flex-direction: row-reverse;
 }
 
-.scroll-element,
-.scroll-caption {
-  width: 50%;
+.scroll-element {
+  width: 40%;
 }
 
 .scroll-element {
   min-height: 300px;
   height: 100%;
-  background-color: #eaeaea;
+  /* background-color: #eaeaea; */
+}
+
+.scroll-element img.ficus {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .scroll-caption {
-  margin: 1rem;
+  margin: 5rem;
+  width:50%;
+}
+
+.scroll-caption h2 {
+  font-family: "Lilita One";
+  font-size: 3rem;
+  color: #fef4ebff;
+  margin-bottom: 3rem;
+}
+
+.scroll-caption p {
+  font-family: "Roboto";
+  font-size: 1.5rem;
+  color: #fef4ebff;
 }
 
 
@@ -148,13 +190,13 @@ a:focus::after {
   opacity: 1;
 }
 
-.scrolled.fade-in {
+/* .scrolled.fade-in {
   animation: fade-in 1s ease-in-out both;
 }
 
 .scrolled.fade-in-bottom {
   animation: fade-in-bottom 1s ease-in-out both;
-}
+} */
 
 .scrolled.slide-left {
   animation: slide-in-left 1s ease-in-out both;
@@ -191,7 +233,7 @@ a:focus::after {
   }
 }
 
-@keyframes fade-in-bottom {
+/* @keyframes fade-in-bottom {
   0% {
     -webkit-transform: translateY(50px);
     transform: translateY(50px);
@@ -211,5 +253,5 @@ a:focus::after {
   100% {
     opacity: 1;
   }
-}
+} */
 

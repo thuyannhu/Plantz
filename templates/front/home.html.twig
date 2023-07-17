@@ -2,36 +2,45 @@
 {% block title %}{{ 'title.home'|trans }}{% endblock %}
 {% block body %}
 
-<section class="scroll-container">
-  <div class="scroll-element js-scroll fade-in">
-
-  </div>
-  <div class="scroll-caption">
-    This animation fades in.
-  </div>
+<section class="background-container">
+    <video autoplay muted loop class="background">
+        <source src="{{ asset('assets/videos/home.mp4') }}" type="video/mp4">
+    </video>
+    <div>
+    <p class="welcome">CET ETE, QUI S'OCCUPE DE VOS PLANTES ?<p>
+    </div>
 </section>
-<section class="scroll-container">
-  <div class="scroll-element js-scroll fade-in-bottom">
 
-  </div>
-  <div class="scroll-caption">
-    This animation slides in to the top.
-  </div>
-</section>
+
 <section class="scroll-container">
   <div class="scroll-element js-scroll slide-left">
-
+<img class="ficus" src="{{ asset('assets/images/zen.jpg') }}" alt="ficus" class="home1">
   </div>
   <div class="scroll-caption">
-    This animation slides in from the left.
+  <h2 class="card-title">Confiez nous vos plantes et partez en toute sérénité</h2>
+    <p class="card-text">Chez Plantz, nous comprenons combien vos plantes d'intérieur 
+    sont précieuses pour vous. Pendant que vous vous évadez en vacances, notre équipe 
+    dévouée bichonnera vos plantes. De l'arrosage régulier à la fertilisation adaptée, 
+    nous prendrons soin de chaque plante, garantissant qu'elles reçoivent l'amour et les soins dont 
+    elles ont besoin en votre absence. </p>
   </div>
 </section>
+
 <section class="scroll-container">
   <div class="scroll-element js-scroll slide-right">
 
   </div>
   <div class="scroll-caption">
     This animation slides in from the right.
+  </div>
+</section>
+
+<section class="scroll-container">
+  <div class="scroll-element js-scroll slide-left">
+
+  </div>
+  <div class="scroll-caption">
+    This animation slides in from the left.
   </div>
 </section>
 
