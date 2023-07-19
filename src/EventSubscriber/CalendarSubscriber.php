@@ -48,8 +48,8 @@ class CalendarSubscriber implements EventSubscriberInterface
              * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
              */
             $bookingEvent->setOptions([
-                'backgroundColor' => '#D89393',
-                'borderColor' => '#D89393',
+                'backgroundColor' => '#eb5c40',
+                'borderColor' => '#eb5c40',
             ]);
 
             $bookingEvent->addOption('url', $this->router->generate('app_booking_show', [

@@ -22,17 +22,17 @@ body {
     color: #eb5c40;
 }
 
-ul {
+nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-a {
-  color: #3bd38c;
+nav a {
+  color: #fef4ebff;
   text-decoration: none;
   font-family: "Lilita One";
-
+  font-size: 1.5rem;
 }
 
 /* Layout */
@@ -41,15 +41,16 @@ nav {
   justify-content: center;
   align-items: center;
   margin: 3rem 4rem;
+  flex-wrap: nowrap;
 }
 
-li {
+nav li {
     display: inline-block;
     margin: 0 3vw;
   }
 
 /* Underline styles */
-a {
+nav a {
   display: block;
   position: relative;
   padding: 0.2em 0;
@@ -57,7 +58,7 @@ a {
 }
 
 /* Fade in */
-a::after {
+nav a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -70,30 +71,37 @@ a::after {
   transform: translate3d(-100%, 0, 0);
 }
 
-a:hover::after,
-a:focus::after {
+nav a:hover::after,
+nav a:focus::after {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
+.nav-link{
+  margin: 0 3vw;
+  font-family: "Roboto";
+  font-size: 1.5rem;
+  color: #eb5c40 !important;
+  font-weight: 700 !important;
+}
 
 .background{
-  width: 90%;
+  width: 100%;
+  filter:brightness(0.4);
 }
 
 .background-container{
-  display: flex;
-  justify-content: center;
-  position: relative;
-
-  
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .welcome{
   position: absolute;
-  top: 3rem;
-  left: 10rem;
-  width: 33%;
+  top: 20rem;
+  left: 13rem;
+  width: 70%;
   padding: 10px;
   font-family: "Lilita One";
   font-size: 3.5rem;
@@ -101,52 +109,83 @@ a:focus::after {
   color: #fef4ebff;
 }
 
+.typed{
+  position: absolute;
+  top: 28rem;
+  left: 13rem;
+  width: 70%;
+  padding: 10px;
+  font-family: "Lilita One";
+  font-size: 2.5rem;
+  z-index: 1;
+  color: #fef4ebff;
+}
+
+
+.cards{
+  margin-top: 105vh;
+}
+
+.footer{
+  background-color: #eb5c40;
+}
+
+.footer-title{
+  font-family: "Roboto";
+  font-size: 1.5rem;
+  color: #fef4ebff;
+  margin: 1rem 0;
+}
+
+.footer-text{
+  font-family: "Roboto";
+  font-size: 1rem;
+  color: #fef4ebff;
+  margin: 1rem 0;
+}
+
 .scroll-container {
-  height: 100vh;
-  margin: 4rem 5rem;
+  height: 50vh;
+  margin: 4rem 12rem;
   min-height: 450px;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.scroll-container:nth-of-type(1) {
+  background-color: #09c684;
 }
 
 .scroll-container:nth-of-type(2) {
-  background-color: #75caa1;
+  background-color: #09c684;
 }
-/* .scroll-container:nth-of-type(2) {
-  background-color: #eb5c40;
-} */
 .scroll-container:nth-of-type(3) {
-  background-color: #eb5c40;
-}
-.scroll-container:nth-of-type(4) {
-  background-color: #569ff8;
+  background-color: #09c684;
 }
 
-.scroll-container:nth-of-type(even) {
+.scroll-container:nth-of-type(odd) {
   flex-direction: row-reverse;
 }
 
 .scroll-element {
-  width: 40%;
-}
-
-.scroll-element {
-  min-height: 300px;
+  width: 30%;
+  margin: 2rem;
   height: 100%;
-  /* background-color: #eaeaea; */
 }
 
-.scroll-element img.ficus {
+
+.scroll-element img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  border-radius: 10px;
 }
 
 .scroll-caption {
   margin: 5rem;
-  width:50%;
+  width:70%;
 }
 
 .scroll-caption h2 {
@@ -158,7 +197,7 @@ a:focus::after {
 
 .scroll-caption p {
   font-family: "Roboto";
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #fef4ebff;
 }
 

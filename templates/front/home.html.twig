@@ -1,47 +1,82 @@
 {% extends 'front_base.html.twig' %}
-{% block title %}{{ 'title.home'|trans }}{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+{% endblock %}
+{% block title %}Accueil
+{% endblock %}
 {% block body %}
 
-<section class="background-container">
-    <video autoplay muted loop class="background">
-        <source src="{{ asset('assets/videos/home.mp4') }}" type="video/mp4">
-    </video>
-    <div>
-    <p class="welcome">CET ETE, QUI S'OCCUPE DE VOS PLANTES ?<p>
-    </div>
-</section>
+	<section class="background-container">
+		<video autoplay muted loop class="background">
+			<source src="{{ asset('assets/videos/home.mp4') }}" type="video/mp4">
+		</video>
+		<div>
+			<p class="welcome">CET ETE, QUI S'OCCUPE DE VOS PLANTES ?</p>
+			<p></p>
+			<p class="typed">
+				<span id="element">
+					<script>
+						var typed = new Typed('#element', {
+							strings: [
+								'Maxime, qui a complètement zappé ?', 
+								'Thuy An, qui a déjà fait mourir un cactus ?', 
+								'Mamie Renée, qui veut bien faire en arrosant tous les jours ?', 
+								'Plantz, le service de garde de plantes d\'intérieur !'
+							],
+							typeSpeed: 50
+						});
+					</script>
+				</span>
+			</p>
+		</div>
+	</section>
 
+	<div class="cards">
 
-<section class="scroll-container">
-  <div class="scroll-element js-scroll slide-left">
-<img class="ficus" src="{{ asset('assets/images/zen.jpg') }}" alt="ficus" class="home1">
-  </div>
-  <div class="scroll-caption">
-  <h2 class="card-title">Confiez nous vos plantes et partez en toute sérénité</h2>
-    <p class="card-text">Chez Plantz, nous comprenons combien vos plantes d'intérieur 
-    sont précieuses pour vous. Pendant que vous vous évadez en vacances, notre équipe 
-    dévouée bichonnera vos plantes. De l'arrosage régulier à la fertilisation adaptée, 
-    nous prendrons soin de chaque plante, garantissant qu'elles reçoivent l'amour et les soins dont 
-    elles ont besoin en votre absence. </p>
-  </div>
-</section>
+		<section class="scroll-container">
+			<div class="scroll-element js-scroll slide-left">
+				<img class="zen" src="{{ asset('assets/images/zen.jpg') }}" alt="zen woman amid plants" class="home1">
+			</div>
+			<div class="scroll-caption">
+				<h2 class="card-title">Confiez nous vos plantes et partez en toute sérénité</h2>
+				<p class="card-text">Chez Plantz, nous savons combien vos plantes d'intérieur 
+										    sont précieuses pour vous. Pendant que vous vous évadez en vacances, notre équipe 
+										    dévouée bichonnera vos plantes. De l'arrosage régulier à la fertilisation adaptée, 
+										    nous prendrons soin de chaque plante, garantissant qu'elles reçoivent l'amour et les soins dont 
+										    elles ont besoin en votre absence.
+				</p>
+			</section>
 
-<section class="scroll-container">
-  <div class="scroll-element js-scroll slide-right">
+			<section class="scroll-container">
+				<div class="scroll-element js-scroll slide-right">
+					<img class="glasshouse" src="{{ asset('assets/images/glasshouse.jpg') }}" alt="women holding plants in a glasshouse" class="home1">
+				</div>
+				<div class="scroll-caption">
+					<h2 class="card-title">
+						Chez nous ou chez vous, c'est vous qui voyez !</h2>
+					<p class="card-text">
+						Chez Plantz, nous sommes flexibles et nous nous adaptons à vos besoins. 
+												Que vous préfériez confier vos plantes d'intérieur à notre équipe experte dans notre espace dédié ou 
+												que vous souhaitiez que nous nous rendions chez vous pour prendre soin de vos chères plantes, la 
+												décision vous revient entièrement !</p>
+				</div>
+			</section>
 
-  </div>
-  <div class="scroll-caption">
-    This animation slides in from the right.
-  </div>
-</section>
+			<section class="scroll-container">
+				<div class="scroll-element js-scroll slide-left">
+					<img class="care" src="{{ asset('assets/images/care.jpg') }}" alt="woman taking care of a plant" class="home1">
+				</div>
+				<div class="scroll-caption">
+					<h2 class="card-title">
+						Découvrez également nos autres services !</h2>
+					<p class="card-text">Chez Plantz, nous proposons des services de bouturage et de soin pour les plantes qui ne sont pas au top de leur forme.
+												 Faites-nous confiance pour multiplier vos plantes avec expertise et redonner vie à celles qui ont besoin 
+												 d'attention. Que ce soit une calathea qui manque d'arrosage ou une maranthe qui vit dans un environnement trop lumineux,
+												 nous vous proposons un diagnostic complet et une prise en charge au sein de nos serres qui proposent des conditions
+												 idéales.</p>
+				</div>
+			</section>
+		</div>
 
-<section class="scroll-container">
-  <div class="scroll-element js-scroll slide-left">
-
-  </div>
-  <div class="scroll-caption">
-    This animation slides in from the left.
-  </div>
-</section>
-
-{% endblock %}
+	{% endblock %}
